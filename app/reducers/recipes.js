@@ -1,16 +1,20 @@
 import createReducer from '../lib/createReducer';
 import * as types from '../actions/types';
 
-//createReducer(...) recebe um initial-state e um outro
-//objecto com hashmap<type,funcao-handler>
-//e retorna o reducer, que é uma function que
-//recebe(inicialState,action),
-//procura o action.type nas keys do hashmap de handlers
-//e executa o value handler retornado pelo hashmap
+//createReducer(...) que recebe:
+//(1) um initial-state e
+//(2) um outro objeto com um hashmap<type,funcao-handler>
+//e retorna um reducer.
 
-//cada const abaixo é uma variável na state-store... por exemplo,
-//searchedRecipes tem o state sendo um objeto com receitas
-//recipeCount tem o state sendo um mero número (inicial = 0)
+//reducer é uma function que recebe(inicialState,action),
+//procura o action.type nas keys do hashmap de handlers
+//e executa o value handler retornado pelo hashmap.
+//Em vez de hashmap, poderia ssó ter um switch statement.
+
+//cada const abaixo é um reducer
+//e cada reducer vira uma variável na state-store...
+//exemplo: searchedRecipes tem state = objeto com receitas
+//recipeCount tem state = um mero número (inicial = 0)
 export const sarchedRecipes = createReducer({},{})
 
 export const recipeCount = createReducer(0,{
