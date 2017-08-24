@@ -48,7 +48,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-    //Esta porção do state vem dos reducers (ver ../actions/recipes.js, por exemplo)
+    //Esta porção do state vem dos reducers (ver ../reducers/recipes.js, por exemplo)
     return{recipeCount: state.recipeCount};
 }
 
