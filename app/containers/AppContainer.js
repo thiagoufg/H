@@ -58,3 +58,6 @@ function mapStateToProps(state){
 //Ele passa a função dispatch, da this.props.store, para que
 //os métodos modificados possam ter esse atalho.
 export default connect( mapStateToProps , mapDispatchToProps )(AppContainer);
+
+//Componentes react conectados com o método acima
+//são chamados de Container Components

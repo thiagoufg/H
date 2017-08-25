@@ -12,7 +12,7 @@ import * as types from '../actions/types';
 //Em vez de hashmap, poderia ssó ter um switch statement.
 
 //cada const abaixo é um reducer
-//e cada reducer vira uma variável na state-store...
+//e cada reducer vira uma variável na state-store, com o state...
 //exemplo: searchedRecipes tem state = objeto com receitas
 //recipeCount tem state = um mero número (inicial = 0)
 export const sarchedRecipes = createReducer({},{})

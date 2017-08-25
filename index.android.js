@@ -20,7 +20,10 @@ function configureStore(initialState){
 
 const store = configureStore({});
 
-
+//Um componente do React Redux chamado <Provider>
+//disponibiliza a redux-store para todos os container components
+//sem precisar passá-la via props manualmente.
+//Container components são aqueles conectados via connect().
 const App = () => (
   <Provider store={store}>
     <AppContainer/>
