@@ -1,26 +1,15 @@
 import React, {Component} from 'react';
-import ReactNative from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {ActionCreators} from '../actions';
-const {
-    View,
-    Text,
-    TouchableHighlight
-} = ReactNative;
+import Home from './Home'
+
 class AppContainer extends Component {
     addRecipe(){
         this.props.addRecipe();
     }
     render(){
-        return <View>
-            <Text style={{marginTop:20}}>
-                I am App Container! Recipe count: 
-                {this.props.recipeCount}</Text>
-            <TouchableHighlight onPress={()=>{this.addRecipe()}}>
-                <Text>Add recipe</Text>
-            </TouchableHighlight>
-        </View>
+        return <Home {...this.props} />
     }
 }
 
@@ -49,7 +38,7 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state){
     //Esta porção do state vem dos reducers (ver ../reducers/recipes.js, por exemplo)
-    return{recipeCount: state.recipeCount};
+    return{};
 }
 
 //o método abaixo faz duas coisas na classe passada (esta):
