@@ -15,11 +15,12 @@ import * as types from '../actions/types';
 //e cada reducer vira uma variável na state-store, com o state...
 //exemplo: searchedRecipes tem state = objeto com receitas
 //recipeCount tem state = um mero número (inicial = 0)
-export const sarchedRecipes = createReducer({},{
+export const searchedRecipes = createReducer({},{
     [types.SET_SEARCHED_RECIPES](state,action){
         let newState = {};
-        action.recipes.forEach(function(element) {
-            newState[element.id] = element;
+        action.recipes.forEach(function(recipe) {
+            let id = recipe.href
+            newState[id] = Object.assign({}, recipe, { id });
         });
         return newState;
     }

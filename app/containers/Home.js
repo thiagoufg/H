@@ -12,22 +12,28 @@ const{
 } = ReactNative;
 
 class Home extends Component {
-    constructor(props){
-        super(props);
-    }
     searchPressed(){
-        console.log('oi');
         this.props.fetchRecipes('banana');
     }
+
+    recipes(){
+        return Object.keys(this.props.searchedRecipes).map(key => this.props.searchedRecipes[key]);
+    }
     render(){
+        console.log(this.recipes());
         return <View style={{marginTop:20}}>
             <View>
                 <TouchableHighlight onPress={()=>{this.searchPressed();}}>
-                    <Text>Procurar5</Text>
+                    <Text>bbb</Text>
                 </TouchableHighlight>
             </View>
             <ScrollView>
-
+                {this.recipes().map((recipe)=>{
+                    return <View key={recipe.id}>
+                        <Image source={{uri:recipe.image}} style={{}}/>
+                        <Text>{recipe.title}</Text>
+                        </View>;
+                })}
             </ScrollView>
         </View>;
     }
