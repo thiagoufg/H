@@ -17,18 +17,33 @@ export function addRecipe(){
 
 //outras funções, que não retornam action, são utilitárias e
 //devem retornar outra função que recebe dispatch e getState,
-//e que faz algo antes de chamar disptach passando uma action
+//e que faz algo e depois chama disptach passando uma action
 
 //mas por causa do thunk-middleware, aplicado na criação da store,
 //se o resultado passado pro dispatch for outra function (middleware),
 //essa function deve receber dispatch e getState,
-//e ela pode retornar promise/observable, que por fim retornará uma action
+//e ela pode retornar promise/observable, que por fim despachará uma action
 //só a action mesmo é passada pro dispatch básico e vai pro redux.
 //mas o dispatch aceita actions e middlewares:
 //ver http://redux.js.org/docs/Glossary.html#async-action
 
-export function fetchRecipes(ingredients){
-    return (dispatch,getState)=>{
-        console.log(getState());
+export function fetchRecipes(ingredients) {
+    return (dispatch, getState) => {
+        const params = [
+            `i=${encodeURIComponent(ingredients)}`,
+            'p=1'
+        ].join('&');
+        return Api.get(`http://www.recipepuppy.com/api/?${params}`).then(resp => {
+        dispatch(setSearchedRecipes({recipes: resp.results}));
+      }).catch( (ex) => {
+        console.log(ex);
+      });
+    }
+  }
+
+export function setSearchedRecipes({ recipes }) {
+    return {
+        type: types.SET_SEARCHED_RECIPES,
+        recipes,
     }
 }

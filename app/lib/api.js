@@ -23,9 +23,7 @@ class Api {
     return this.xhr(route, params, 'DELETE')
   }
 
-  static xhr(route, params, verb) {
-    const host = 'http://www.recipepuppy.com'
-    const url = `${host}${route}`
+  static xhr(url, params, verb) {
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null );
     options.headers = Api.headers()
     return fetch(url, options).then( resp => {
@@ -34,7 +32,7 @@ class Api {
         return json
       }
       return json.then(err => {throw err});
-    }).then( json => json.results );
+    });
   }
 }
 export default Api

@@ -17,13 +17,13 @@ class Home extends Component {
     }
     searchPressed(){
         console.log('oi');
-        this.props.fetchRecipes('choco');
+        this.props.fetchRecipes('banana');
     }
     render(){
         return <View style={{marginTop:20}}>
             <View>
                 <TouchableHighlight onPress={()=>{this.searchPressed();}}>
-                    <Text>Procurar</Text>
+                    <Text>Procurar5</Text>
                 </TouchableHighlight>
             </View>
             <ScrollView>
